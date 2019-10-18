@@ -1,4 +1,8 @@
-
+maze = [['#','#','#','#','#','#','#','#','#'], 
+     	['#','S','#',' ',' ',' ','#','E','#'], 
+     	['#',' ','#',' ','#',' ',' ',' ','#'], 
+     	['#',' ',' ',' ','#',' ','#',' ','#'], 
+     	['#', '#','#','#','#','#','#','#','#']] 
 
 class Maze:
 	def __init__(self, maze):
@@ -6,10 +10,11 @@ class Maze:
 		self.height = len(maze)
 		self.start
 		self.end
-		self.current_path
-		self.visited
+		self.current_path = []
+		self.visited = []
 		self.wall = []
 		self.open = []
+		self.paths = []
 	for x in range(maze):
 		for y in range(maze[x]):
 			p = maze[x][y]
