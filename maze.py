@@ -5,11 +5,8 @@ class Maze:
 		self.height = None
 		self.start = None
 		self.end = None
-		self.current_path = []
-		self.visited = []
-		self.open = []
-		self.paths = []
 		self.maze = maze
+		
 	def make_maze(self, height, width, maze_type = "h"):
 		self.height = height
 		self.width = width
@@ -41,12 +38,9 @@ class Maze:
 			raise ValueError("Incorrect Maze type. (try h, v, or fse)")
 		self.maze[self.start[0]][self.start[1]] = "s"
 		self.maze[self.end[0]][self.end[1]] = "e"
-	
 		for i in open_points:
 			self.maze[i[0]][i[1]] = random.choice([" ", " ", "#"])
 					
-						
-
 	def find_end_points(self, maze):
 		for x in range(len(maze)):
 			for y in range(len(maze[x])):
@@ -55,8 +49,10 @@ class Maze:
 					self.start = (x, y)
 				elif p == "e" or p == "E":
 					self.end = (x, y)
+
 	def see_maze(self):
 		for i in self.maze:
 			print(i)
+
 	def maze_stats(self):
 		print(f"	start: {self.start} \n	end: {self.end}\n	size: {self.height} x {self.length}")
