@@ -10,4 +10,6 @@ m1 = [	['#','#','#','#','#','#','#','#','#'],
 maze = Maze(layout=m1)
 
 #maze.build_new(15, 20)
-maze.view_layout()
+runner = Runner(maze)
+runner.get_nodes()
+print(runner.nodes)

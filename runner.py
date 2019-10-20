@@ -1,20 +1,29 @@
 class Runner:
 	def __init__(self, maze):
+		self.nodes = set()
+		self.node_paths = []
 		self.current_route = []
 		self.checked_paths = []
 		self.possible_routes = []
-		p = maze.find_end_points()
-		self.start = p[0]
-		self.end = p[1]
+		self.start = None
+		self.end = None
 		self.maze = maze
 
+	def get_nodes(self):
+		self.find_end_points()
+		p = self.maze.layout
+		for x in range(len(p)):
+			for y in range(len(p[x])):
+				if p[x][y] == " ":
+					self.nodes.add((x,y))
+
 	def find_end_points(self):
-		for x in range(len(self.maze)):
-			for y in range(len(self.maze[x])):
-				p = self.maze[x][y]
-				if p == self.start_char:
-					start = (x, y)
-				elif p == self.end_char:
-					send = (x, y)
+		for x in range(len(self.maze.layout)):
+			for y in range(len(self.maze.layout[x])):
+				p = self.maze.layout[x][y]
+				if p == self.maze.start_char:
+					self.start = (x, y)
+				elif p == self.maze.end_char:
+					self.end = (x, y)
 
 	
