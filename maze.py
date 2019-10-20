@@ -1,23 +1,25 @@
 import random
 
 class Maze:
-	def __init__ (self, maze=[[]]):
-		self.width = len(maze[0])
-		self.height = len(maze)
-		self.maze = maze
-		self.start = None
-		self.end = None
-		
-	def make_maze(self, height, width, maze_type = "h"):
+	def __init__ (self, start_char="s", end_char = "e", wall_char = "#", open_char=" ", layout=[[]]):
+		self.width = len(layout[0])
+		self.height = len(layout)
+		self.wall_char = wall_char
+		self.start_char = start_char
+		self.end_char = end_char
+		self.open_char = open_char
+		self.layout = layout
+	
+	def build_new(self, height, width, maze_type = "h"):
 		self.height = height
 		self.width = width
-		self.maze = [[(h, w) for w in range(width)] for h in range(height)]
+		self.layout = [[(h, w) for w in range(width)] for h in range(height)]
 		open_points = []
-		for x in range(len(self.maze)):
-			for y in range(len(self.maze[x])):
-				p = self.maze[x][y]
+		for x in range(len(self.layout)):
+			for y in range(len(self.layout[x])):
+				p = self.layout[x][y]
 				if p[0] == 0 or p[1] == 0 or p[0] == height-1 or p[1] == width-1:
-					self.maze[x][y] = "#"
+					self.layout[x][y] = self.wall_char
 				else:
 					open_points.append((x,y))
 		if maze_type == "h":
@@ -37,31 +39,17 @@ class Maze:
 			del open_points[open_points.index(e)]
 		else:
 			raise ValueError("Incorrect Maze type. (try h, v, or r)")
-		self.maze[s[0]][s[1]] = "s"
-		self.maze[e[0]][e[1]] = "e"
+		self.layout[s[0]][s[1]] = self.start_char
+		self.layout[e[0]][e[1]] = self.end_char
 		for i in open_points:
-			self.maze[i[0]][i[1]] = random.choice([" ", " ", "#"])
+			self.layout[i[0]][i[1]] = random.choice([self.open_char, self.open_char, self.wall_char])
 
-	def see_maze(self):
-		for i in self.maze:
+	def type_info(self):
+		print(f"	start point: {self.start_char}\n	end point: {self.end_char}\n	open spaces: {self.open_char}	wall type: {self.wall_char}\n	size: {maze.height} x {maze.width}")
+
+	def view_layout(self):
+		for i in self.layout:
 			print(i)
 	
-	def find_end_points(self):
-		for x in range(len(self.maze)):
-			for y in range(len(self.maze[x])):
-				p = self.maze[x][y]
-				if p == "s" or p == "S":
-					self.start = (x, y)
-				elif p == "e" or p == "E":
-					self.end = (x, y)
+	
 
-	def runner(self):
-		self.find_end_points()
-		current_route = []
-		checked_paths = []
-		possible_routes = []
-		print(self.maze[self.start[0]][self.start[1]])
-
-	def maze_stats(self):
-		self.find_end_points()
-		print(f"	start: {self.start} \n	end: {self.end}\n	size: {self.height} x {self.width}")
