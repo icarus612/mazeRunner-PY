@@ -10,7 +10,6 @@ class Runner:
 		self.maze = maze
 
 	def get_nodes(self):
-		self.find_end_points()
 		p = self.maze.layout
 		for x in range(len(p)):
 			for y in range(len(p[x])):
@@ -26,4 +25,8 @@ class Runner:
 				elif p == self.maze.end_char:
 					self.end = (x, y)
 
-	
+	def make_node_paths(self):
+		self.find_end_points()
+		self.get_nodes()
+		for i in self.nodes:
+			print(i)

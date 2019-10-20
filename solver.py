@@ -11,5 +11,4 @@ maze = Maze(layout=m1)
 
 #maze.build_new(15, 20)
 runner = Runner(maze)
-runner.get_nodes()
-print(runner.nodes)
+runner.make_node_paths()
