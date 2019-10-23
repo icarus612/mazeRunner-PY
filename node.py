@@ -4,7 +4,7 @@ class Node:
 		self.children = set()
 
 	def add_child(self, child_node):
-		self.children.append(child_node) 
+		self.children.add(child_node) 
 		
 	def remove_child(self, child_node):
 		self.children = [child for child in self.children if child is not child_node]
