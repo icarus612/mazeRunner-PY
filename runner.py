@@ -38,11 +38,8 @@ class Runner:
 				node.add_child(i)
 
 	def make_node_paths(self, point):
-		self.look_around(point)
-		for i in point.children:
-			print(i.value)
-			if i not in self.visited:
-				self.visited.add(i)
+		if point not in self.visited:
+			self.visited.add(point)
+			self.look_around(point)
+			for i in point.children:
 				self.make_node_paths(i)
-				
-			
