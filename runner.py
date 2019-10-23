@@ -2,6 +2,7 @@ from node import Node
 class Runner:
 	def __init__(self, maze):
 		self.open_nodes = set()
+		self.visited = set()
 		self.node_paths = []
 		self.start = None
 		self.end = None
@@ -35,9 +36,13 @@ class Runner:
 				node.add_child(i)
 			elif i.value[1]+1 == node.value[1] and i.value[0] == node.value[0]:
 				node.add_child(i)
-		
+
 	def make_node_paths(self, point):
 		self.look_around(point)
 		for i in point.children:
-			self.make_node_paths(i)
+			print(i.value)
+			if i not in self.visited:
+				self.visited.add(i)
+				self.make_node_paths(i)
+				
 			
