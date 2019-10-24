@@ -7,6 +7,7 @@ class Runner:
 		self.start = None
 		self.end = None
 		self.maze = maze
+		self.completed = False
 		self.find_end_points()
 		self.get_open_nodes()
 
@@ -14,7 +15,7 @@ class Runner:
 		p = self.maze.layout
 		for x in range(len(p)):
 			for y in range(len(p[x])):
-				if p[x][y] == self.maze.open_char:
+				if p[x][y] != self.maze.wall_char:
 					self.open_nodes.add(Node((x, y)))
 
 	def find_end_points(self):
@@ -36,12 +37,18 @@ class Runner:
 				node.add_child(i)
 			elif i.value[1]+1 == node.value[1] and i.value[0] == node.value[0]:
 				node.add_child(i)
-
+		
 	def make_node_paths(self, point=None):
 		if point == None:
 			point = self.start
 		if point not in self.visited:
-			self.visited.add(point)
 			self.look_around(point)
+			self.visited.add(point)
 			for i in point.children:
 				self.make_node_paths(i)
+
+	def can_run(self):
+		for i in self.visited:
+			if i.value == self.end.value:
+				self.completed = True
+		return self.completed

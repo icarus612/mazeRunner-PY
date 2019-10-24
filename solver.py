@@ -26,9 +26,10 @@ try:
 except IndexError:
 	maze = Maze()
 
-runner = Runner(maze)
 maze.view_layout()
-print(runner.start.value)
+runner = Runner(maze)
 runner.make_node_paths()
-print(runner.open_nodes)
-print(runner.end.value)
+if runner.can_run():
+	print(runner.completed)
+else:
+	print(runner.completed)
