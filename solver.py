@@ -30,6 +30,6 @@ maze.view_layout()
 runner = Runner(maze)
 runner.make_node_paths()
 if runner.can_run():
-	print(runner.completed)
+	runner.build_path()
 else:
 	print(runner.completed)

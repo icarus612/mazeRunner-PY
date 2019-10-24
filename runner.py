@@ -1,4 +1,5 @@
 from node import Node
+
 class Runner:
 	def __init__(self, maze):
 		self.open_nodes = set()
@@ -52,3 +53,17 @@ class Runner:
 			if i.value == self.end.value:
 				self.completed = True
 		return self.completed
+	
+	def build_path(self, path="x"):
+		other_options = set(["x", "o", "+", "*", "p"])
+		maze = self.maze	
+		if path == maze.start_char or path == maze.end_char or path == maze.wall_char or path == maze.open_char:
+			print("Path character is already being used as a maze character trying something else...")
+			for i in other_options:
+				if i == maze.start_char or i == maze.end_char or i == maze.wall_char or i == maze.open_char:
+					pass
+				else:
+					path = i
+					print(f"New path character: {i}")
+					break
+									

@@ -61,5 +61,3 @@ class Maze:
 		for i in self.layout:
 			print(i)
 	
-	
-
