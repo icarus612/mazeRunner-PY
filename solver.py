@@ -37,19 +37,24 @@ elif len(sys.argv) == 3:
 		saveFile = sys.argv[2]
 else:
 	maze = Maze(build=(int(sys.argv[1]), int(sys.argv[2])))	
-	saveFile = sys.argv[4]
+	saveFile = sys.argv[3]
 
 maze.view_layout()
 runner = Runner(maze)
 runner.make_node_paths()
 
 if runner.completed:
+	print(runner.completed)
+	
 	x = runner.build_path()
 	with open(saveFile, "a") as file:
+		file.write("\n Origional maze: ")
 		for i in maze.layout:
 			for j in i:
 				file.write(j)
 			file.write("\n")
+		file.write("\n Solved maze: ")
+	
 else:
 	print(runner.completed)
 
