@@ -3,8 +3,10 @@ from runner import Runner
 import sys
 import numpy as np
 
-try:
-	with open(sys.argv[1]) as m:
+saveFile = "completed.txt"
+
+def open_and_build(file):
+	with open(file) as m:
 		txt = m.read()
 		m1 = [list(i) for i in txt.split("\n")]
 		flat = [y for x in m1 for y in x]
@@ -21,15 +23,33 @@ try:
 		flat[:] = [x for x in flat if x != wall and x != space]
 		start = flat[0]
 		end = flat[1]
-		maze = Maze(m1, start, end, wall, space)
-		
-except IndexError:
+		return Maze(m1, start, end, wall, space)
+
+if len(sys.argv) == 1:
 	maze = Maze()
+elif len(sys.argv) == 2:
+	maze = open_and_build(sys.argv[1])
+elif len(sys.argv) == 3:
+	try:
+		maze = Maze(build=(int(sys.argv[1]), int(sys.argv[2])))	
+	except:
+		maze = open_and_build(sys.argv[1])
+		saveFile = sys.argv[2]
+else:
+	maze = Maze(build=(int(sys.argv[1]), int(sys.argv[2])))	
+	saveFile = sys.argv[4]
 
 maze.view_layout()
 runner = Runner(maze)
 runner.make_node_paths()
-if runner.can_run():
-	runner.build_path()
+
+if runner.completed:
+	x = runner.build_path()
+	with open(saveFile, "a") as file:
+		for i in maze.layout:
+			for j in i:
+				file.write(j)
+			file.write("\n")
 else:
 	print(runner.completed)
+
