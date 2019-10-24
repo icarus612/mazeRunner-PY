@@ -1,18 +1,27 @@
 import random
 
 class Maze:
-	def __init__ (self, start_char="s", end_char = "e", wall_char = "#", open_char=" ", layout=[[]]):
-		self.width = len(layout[0])
-		self.height = len(layout)
+	def __init__ (self, layout=None, start_char="s", end_char = "e", wall_char = "#", open_char=" "):
 		self.wall_char = wall_char
 		self.start_char = start_char
 		self.end_char = end_char
 		self.open_char = open_char
 		self.layout = layout
-	
-	def build_new(self, height, width, maze_type = "h"):
-		self.height = height
-		self.width = width
+		if layout:
+			self.width = len(layout[0])
+			self.height = len(layout)
+		else:
+			self.build_new(10, 10)
+
+	def build_new(self, height=None, width=None, maze_type = "h"):
+		if height == None:
+			height = self.height 
+		else:
+			self.height = height
+		if width == None:
+			width = self.width 
+		else:
+			self.width = width
 		self.layout = [[(h, w) for w in range(width)] for h in range(height)]
 		open_points = []
 		for x in range(len(self.layout)):
@@ -24,13 +33,13 @@ class Maze:
 					open_points.append((x,y))
 		if maze_type == "h":
 			s= (1, random.choice(range(1, width-1)))
-			e = (height-2, random.choice(range(1, width-1)))
 			del open_points[open_points.index(s)]
+			e = (height-2, random.choice(range(1, width-1)))
 			del open_points[open_points.index(e)]
 		elif maze_type == "v":
 			s = (random.choice(range(1, height-1)), 1)
-			e = (random.choice(range(1, height-1)), width-2)
 			del open_points[open_points.index(s)]
+			e = (random.choice(range(1, height-1)), width-2)
 			del open_points[open_points.index(e)]
 		elif maze_type == "r":
 			s = random.choice(open_points)
@@ -43,6 +52,7 @@ class Maze:
 		self.layout[e[0]][e[1]] = self.end_char
 		for i in open_points:
 			self.layout[i[0]][i[1]] = random.choice([self.open_char, self.open_char, self.wall_char])
+		return self.layout
 
 	def type_info(self):
 		print(f"	start point: {self.start_char}\n	end point: {self.end_char}\n	open spaces: {self.open_char}	wall type: {self.wall_char}\n	size: {maze.height} x {maze.width}")

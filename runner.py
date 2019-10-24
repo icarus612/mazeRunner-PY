@@ -37,7 +37,9 @@ class Runner:
 			elif i.value[1]+1 == node.value[1] and i.value[0] == node.value[0]:
 				node.add_child(i)
 
-	def make_node_paths(self, point):
+	def make_node_paths(self, point=None):
+		if point == None:
+			point = self.start
 		if point not in self.visited:
 			self.visited.add(point)
 			self.look_around(point)
