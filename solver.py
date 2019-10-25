@@ -58,4 +58,3 @@ if runner.completed:
 				file.write(j)
 			file.write("\n")
 		file.write("\n")
-

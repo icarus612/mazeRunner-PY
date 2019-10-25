@@ -81,3 +81,4 @@ class Runner:
 			for j in range(len(self.mapped_maze[i])):
 				if (i, j) in self.end.path and (i, j) != self.start.value:
 					self.mapped_maze[i][j] = path
+					
