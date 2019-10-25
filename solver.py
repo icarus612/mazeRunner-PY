@@ -1,7 +1,6 @@
 from maze import Maze
 from runner import Runner
 import sys
-import numpy as np
 
 saveFile = "completed.txt"
 
@@ -43,18 +42,19 @@ maze.view_layout()
 runner = Runner(maze)
 runner.make_node_paths()
 
-if runner.completed:
-	print(runner.completed)
-	
+if runner.completed:	
 	x = runner.build_path()
 	with open(saveFile, "a") as file:
-		file.write("\n Origional maze: ")
+		file.write("Origional maze: \n")
 		for i in maze.layout:
 			for j in i:
 				file.write(j)
 			file.write("\n")
-		file.write("\n Solved maze: ")
-	
+		file.write("\n Solved maze: \n")
+		for i in runner.mapped_maze:
+			for j in i:
+				file.write(j)
+			file.write("\n")
+		file.write("\n")
 else:
 	print(runner.completed)
-

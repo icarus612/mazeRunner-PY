@@ -13,7 +13,7 @@ class Maze:
 		else:
 			self.build_new(build[0], build[1])
 
-	def build_new(self, height=None, width=None, maze_type = "h"):
+	def build_new(self, width=None, height=None, maze_type = "h"):
 		if height == None:
 			height = self.height 
 		else:

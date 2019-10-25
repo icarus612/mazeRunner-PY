@@ -65,3 +65,5 @@ class Runner:
 					path = i
 					print(f"New path character: {i}")
 					break
+		self.connect_nodes(self.start)
+		
