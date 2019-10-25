@@ -41,10 +41,12 @@ else:
 maze.view_layout()
 runner = Runner(maze)
 runner.make_node_paths()
+print(f"Is maze possible? {runner.completed}")
 
 if runner.completed:	
-	x = runner.build_path()
-	with open(saveFile, "a") as file:
+	runner.build_path()
+	runner.view_completed()
+	with open(saveFile, "w") as file:
 		file.write("Origional maze: \n")
 		for i in maze.layout:
 			for j in i:
@@ -56,5 +58,4 @@ if runner.completed:
 				file.write(j)
 			file.write("\n")
 		file.write("\n")
-else:
-	print(runner.completed)
+
