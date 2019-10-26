@@ -40,7 +40,6 @@ else:
 
 maze.view_layout()
 runner = Runner(maze)
-print(runner.start.children)
 runner.make_node_paths()
 complete = "Yes" if runner.completed else "No"
 print(f"Is maze possible? {complete}")
