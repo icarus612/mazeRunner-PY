@@ -1,65 +1,75 @@
 from node import Node
+import copy
 
 class Runner:
 	def __init__(self, maze):
-		self.open_nodes = set()
+		self.open_nodes = []
 		self.visited = set()
+		self.to_visit = []
 		self.start = None
 		self.end = None
 		self.maze = maze
 		self.completed = False
 		self.mapped_maze = []
-
-		self.find_end_points()
+		self.node_paths = []
 		self.get_open_nodes()
+		self.find_end_points()
 		
 	def get_open_nodes(self):
 		p = self.maze.layout
 		for x in range(len(p)):
 			for y in range(len(p[x])):
 				if p[x][y] != self.maze.wall_char:
-					self.open_nodes.add(Node((x, y)))
+					self.open_nodes.append(Node((x, y)))
 
 	def find_end_points(self):
+		def check(node_val):
+			if node_val not in [i.value for i in self.open_nodes]:
+				node = Node(node_val) 
+			else:
+				for i in self.open_nodes:
+					if i.value == node_val:
+						node = i
+			return node
+			
 		for x in range(len(self.maze.layout)):
 			for y in range(len(self.maze.layout[x])):
 				p = self.maze.layout[x][y]
 				if p == self.maze.start_char:
-					self.start = Node((x, y))
+					self.start = check((x, y))
 				elif p == self.maze.end_char:
-					self.end = Node((x, y))
+					self.end = check((x, y))
 
 	def look_around(self, node):
 		for i in self.open_nodes:
 			if i.value[0]-1 == node.value[0] and i.value[1] == node.value[1]:
-				if i not in self.visited:
-					node.add_child(i)
-			elif i.value[0]+1 == node.value[0] and i.value[1] == node.value[1]:
-				if i not in self.visited:
-					node.add_child(i)
-			elif i.value[1]-1 == node.value[1] and i.value[0] == node.value[0]:
-				if i not in self.visited:
-					node.add_child(i)
-			elif i.value[1]+1 == node.value[1] and i.value[0] == node.value[0]:
-				if i not in self.visited:
-					node.add_child(i)		
-
-	def make_node_paths(self, point=None):
-		if point == None:
-			point = self.start
-		if point not in self.visited:
-			self.visited.add(point)
-			if point.value == self.end.value:
-				self.end = point
-				self.completed = True
-			else: 
+				node.add_child(i)
+			if i.value[0]+1 == node.value[0] and i.value[1] == node.value[1]:
+				node.add_child(i)
+			if i.value[1]-1 == node.value[1] and i.value[0] == node.value[0]:
+				node.add_child(i)
+			if i.value[1]+1 == node.value[1] and i.value[0] == node.value[0]:
+				node.add_child(i)		
+				
+	def make_node_paths(self, start=None):
+		if start != None:
+			self.to_visit.append(start)
+		if self.to_visit:
+			for point in self.to_visit:
 				self.look_around(point)
-				for i in point.children:
-					path = point.path.copy()
-					path.add(point.value)
-					i.add_path(path)
-					self.make_node_paths(i)
-
+				self.to_visit.remove(point)
+				if point not in self.visited:
+					self.visited.add(point)
+					new_path = point.path.copy()
+					new_path.add(point.value)
+					for i in point.children:
+						i.set_path(new_path)
+						if i.value == self.end.value:
+							self.completed = True
+							self.node_paths.append(new_path)
+						self.to_visit.append(i)
+				self.make_node_paths()
+				
 	def view_completed(self):
 		for i in self.mapped_maze:
 			print(i)
@@ -77,8 +87,9 @@ class Runner:
 					print(f"New path character: {i}")
 					break
 		self.mapped_maze = [list(i) for i in maze.layout]
+		print(len(self.node_paths))
 		for i in range(len(self.mapped_maze)):
 			for j in range(len(self.mapped_maze[i])):
 				if (i, j) in self.end.path and (i, j) != self.start.value:
 					self.mapped_maze[i][j] = path
-				
+	
