@@ -51,6 +51,7 @@ class Runner:
 				node.add_child(i)		
 				
 	def make_node_paths(self):
+		self.to_visit.append(self.start)
 		while len(self.to_visit) > 0:
 			if self.to_visit:
 				for point in self.to_visit:
