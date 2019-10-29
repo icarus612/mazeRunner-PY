@@ -50,23 +50,21 @@ class Runner:
 			if i.value[1]+1 == node.value[1] and i.value[0] == node.value[0]:
 				node.add_child(i)		
 				
-	def make_node_paths(self, start=None):
-		if start != None:
-			self.to_visit.append(start)
-		if self.to_visit:
-			for point in self.to_visit:
-				self.look_around(point)
-				self.to_visit.remove(point)
-				if point not in self.visited:
-					self.visited.add(point)
-					new_path = point.path.copy()
-					new_path.add(point.value)
-					for i in point.children:
-						i.set_path(new_path)
-						if i.value == self.end.value:
-							self.completed = True
-						self.to_visit.append(i)
-				self.make_node_paths()
+	def make_node_paths(self):
+		while len(self.to_visit) > 0:
+			if self.to_visit:
+				for point in self.to_visit:
+					self.look_around(point)
+					self.to_visit.remove(point)
+					if point not in self.visited:
+						self.visited.add(point)
+						new_path = point.path.copy()
+						new_path.add(point.value)
+						for i in point.children:
+							i.set_path(new_path)
+							if i.value == self.end.value:
+								self.completed = True
+							self.to_visit.append(i)
 				
 	def view_completed(self):
 		for i in self.mapped_maze:
