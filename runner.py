@@ -11,7 +11,6 @@ class Runner:
 		self.maze = maze
 		self.completed = False
 		self.mapped_maze = []
-		self.node_paths = []
 		self.get_open_nodes()
 		self.find_end_points()
 		
@@ -66,7 +65,6 @@ class Runner:
 						i.set_path(new_path)
 						if i.value == self.end.value:
 							self.completed = True
-							self.node_paths.append(new_path)
 						self.to_visit.append(i)
 				self.make_node_paths()
 				
@@ -87,7 +85,6 @@ class Runner:
 					print(f"New path character: {i}")
 					break
 		self.mapped_maze = [list(i) for i in maze.layout]
-		print(len(self.node_paths))
 		for i in range(len(self.mapped_maze)):
 			for j in range(len(self.mapped_maze[i])):
 				if (i, j) in self.end.path and (i, j) != self.start.value:
