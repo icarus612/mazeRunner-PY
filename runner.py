@@ -54,7 +54,7 @@ class Runner:
 	def make_node_paths(self):
 		self.to_visit.append(self.start)
 		while len(self.to_visit) > 0:
-			for point in self.to_visit:
+			for point in self.to_visit.copy():
 				self.to_visit.remove(point)
 				if point not in self.visited:
 					self.look_around(point)
@@ -90,6 +90,9 @@ class Runner:
 		for i in self.possible_paths:
 			if len(i) < len(best_route):
 				best_route = i
+				print(len(i))
+			print(len(self.end.path))
+		print(len(best_route))
 		for i in range(len(self.mapped_maze)):
 			for j in range(len(self.mapped_maze[i])):
 				if (i, j) in best_route and (i, j) != self.start.value:

@@ -11,7 +11,7 @@ class Node:
 		self.children.append(child_node)
 		
 	def set_path(self, node_path):
-		if not self.path:
+		if not self.path or len(node_path) < len(self.path):
 			self.path = node_path
 		
 	def remove_child(self, child_node):
