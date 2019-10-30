@@ -90,9 +90,6 @@ class Runner:
 		for i in self.possible_paths:
 			if len(i) < len(best_route):
 				best_route = i
-				print(len(i))
-			print(len(self.end.path))
-		print(len(best_route))
 		for i in range(len(self.mapped_maze)):
 			for j in range(len(self.mapped_maze[i])):
 				if (i, j) in best_route and (i, j) != self.start.value:
