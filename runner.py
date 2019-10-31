@@ -1,5 +1,4 @@
 from node import Node
-import copy
 
 class Runner:
 	def __init__(self, maze):
