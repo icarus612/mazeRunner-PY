@@ -15,8 +15,8 @@ A maze runner project with a Node, Maze, and Runner class, as well as a Solver s
 ### How To Run:
 ``` python solver.py examples/m5.txt ```
 or with a height and width:
- ``` python solver 30 40 ```
+ ``` python solver.py 30 40 ```
 You can also add a save file like so. (The default is "completed.txt")
 ``` python solver.py examples/m5.txt saveFile.txt```
 or 
-``` python 30 40 completed.txt saveFile.txt```
+``` python solver.py 30 40 saveFile.txt```
