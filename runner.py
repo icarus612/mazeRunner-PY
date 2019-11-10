@@ -20,7 +20,7 @@ class Runner:
 			for y in range(len(p[x])):
 				if p[x][y] != self.maze.wall_char:
 					self.open_nodes.append(Node((x, y)))
-
+						
 	def find_end_points(self):
 		def check(node_val):
 			if node_val not in [i.value for i in self.open_nodes]:
@@ -64,8 +64,8 @@ class Runner:
 						i.set_path(new_path)
 						if i.value == self.end.value:
 							self.completed = True
-							self.possible_paths.append(new_path)
-						self.to_visit.append(i)
+						else:
+							self.to_visit.append(i)
 
 				
 	def view_completed(self):
@@ -85,12 +85,8 @@ class Runner:
 					print(f"New path character: {i}")
 					break
 		self.mapped_maze = [list(i) for i in maze.layout]
-		best_route = self.possible_paths[0] or self.end.path
-		for i in self.possible_paths:
-			if len(i) < len(best_route):
-				best_route = i
 		for i in range(len(self.mapped_maze)):
 			for j in range(len(self.mapped_maze[i])):
-				if (i, j) in best_route and (i, j) != self.start.value:
+				if (i, j) in self.end.path and (i, j) != self.start.value:
 					self.mapped_maze[i][j] = path
 	
