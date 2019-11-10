@@ -16,3 +16,4 @@ class Node:
 		
 	def remove_child(self, child_node):
 		self.children.discard(child_node)
+		
