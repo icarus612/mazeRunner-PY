@@ -9,6 +9,5 @@ setup(name='Maze Runner',
       license='MIT',
       install_requires=[
           'random',
-          'sys',
       ],
       zip_safe=False)
