@@ -1,7 +1,7 @@
 import random
 
 class Maze:
-	def __init__ (self, layout=None, start_char="s", end_char="e", wall_char="#", open_char=" ", build=(10, 10)):
+	def __init__ (self, layout=None, start_char="s", end_char="e", wall_char="#", open_char=" ", build=(10, 10), build_type="h"):
 		self.wall_char = wall_char
 		self.start_char = start_char
 		self.end_char = end_char
@@ -11,9 +11,9 @@ class Maze:
 			self.width = len(layout[0])
 			self.height = len(layout)
 		else:
-			self.build_new(build[0], build[1])
+			self.build_new(build[0], build[1], build_type)
 
-	def build_new(self, width=None, height=None, maze_type = "h"):
+	def build_new(self, width=None, height=None, maze_type="h"):
 		if height == None:
 			height = self.height 
 		else:

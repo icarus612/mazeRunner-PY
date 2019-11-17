@@ -62,7 +62,7 @@ def build_new():
 		except:
 			input("Must be the number 1, 2 or 3 (press enter to try again ctrl + c to end)")
 	maze = Maze()
-	maze.build_new(m[0], m[1], maze_type=maze_type)
+	maze.build_new(m[0], m[1], maze_type)
 	return maze
 	
 
