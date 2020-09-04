@@ -32,7 +32,7 @@ class Maze:
 				else:
 					open_points.append((x,y))
 		if maze_type == "h":
-			s= (1, random.choice(range(1, width-1)))
+			s = (1, random.choice(range(1, width-1)))
 			del open_points[open_points.index(s)]
 			e = (height-2, random.choice(range(1, width-1)))
 			del open_points[open_points.index(e)]
