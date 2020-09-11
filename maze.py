@@ -55,7 +55,7 @@ class Maze:
 		return self.layout
 
 	def type_info(self):
-		print(f"	start point: {self.start_char}\n	end point: {self.end_char}\n	open spaces: {self.open_char}	wall type: {self.wall_char}\n	size: {maze.height} x {maze.width}")
+		print(f"	start point: {self.start_char}\n	end point: {self.end_char}\n	open spaces: {self.open_char}	wall type: {self.wall_char}\n	size: {self.height} x {self.width}")
 
 	def view_layout(self):
 		for i in self.layout:
