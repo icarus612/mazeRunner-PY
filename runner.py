@@ -66,8 +66,7 @@ class Runner:
 							self.completed = True
 						else:
 							self.to_visit.append(i)
-
-				
+		
 	def view_completed(self):
 		for i in self.mapped_maze:
 			print(i)
