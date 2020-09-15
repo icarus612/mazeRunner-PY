@@ -13,16 +13,10 @@ class Maze:
 		else:
 			self.build_new(build[0], build[1], build_type)
 
-	def build_new(self, height=None, width=None, maze_type="h"):
+	def build_new(self, height=10, width=10, maze_type="h"):
 		open_points = []
-		if height == None:
-			height = self.height 
-		else:
-			self.height = height
-		if width == None:
-			width = self.width 
-		else:
-			self.width = width
+		self.height = height
+		self.width = width
 		self.layout = [[(h, w) for w in range(width)] for h in range(height)]
 		for x in range(len(self.layout)):
 			for y in range(len(self.layout[x])):
