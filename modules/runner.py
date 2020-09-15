@@ -1,4 +1,4 @@
-from node import Node
+from modules.node import Node
 
 class Runner:
 	def __init__(self, maze):

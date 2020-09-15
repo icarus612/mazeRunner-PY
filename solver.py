@@ -1,5 +1,5 @@
-from maze import Maze
-from runner import Runner
+from modules.maze import Maze
+from modules.runner import Runner
 import re
 
 def open_and_build(file):
