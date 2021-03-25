@@ -1,7 +1,14 @@
 from modules.maze import Maze
 from modules.runner import Runner
-import sys
+import argparse
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-of", "--openfile", help="Open File Name", dest='openfile', type=str)
+parser.add_argument("-sf", "--savefile", help="Save File Name", dest='savefile', type=str, default='completed.txt')
+parser.add_argument("-xy", "--dimensions", help="Maze dimentions", dest='dimensions', type=int, nargs=2)
+parser.add_argument("-mt", "--type", help="Maze Type", dest='type', type=str, default='h')
+
+args = parser.parse_args()
 saveFile = "completed.txt"
 
 def open_and_build(file):
@@ -24,19 +31,12 @@ def open_and_build(file):
 		end = flat[1]
 		return Maze(m1, start, end, wall, space)
 
-if len(sys.argv) == 1:
-	maze = Maze()
-elif len(sys.argv) == 2:
+if args.openfile:
 	maze = open_and_build(sys.argv[1])
-elif len(sys.argv) == 3:
-	try:
-		maze = Maze(build=(int(sys.argv[1]), int(sys.argv[2])))	
-	except:
-		maze = open_and_build(sys.argv[1])
-		saveFile = sys.argv[2]
+elif args.dimensions:
+	maze = Maze(build=(int(args.dimensions[0]), int(args.dimensions[1])), build_type=args.type)	
 else:
-	maze = Maze(build=(int(sys.argv[1]), int(sys.argv[2])))	
-	saveFile = sys.argv[3]
+	maze = Maze(build_type=args.type)	
 
 maze.view_layout()
 runner = Runner(maze)
