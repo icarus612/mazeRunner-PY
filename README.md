@@ -15,3 +15,5 @@ A maze runner project with a Node, Maze, and Runner class, as well as a Solver s
 ### How To Run:
 ``` python solver.py```
 It guides you throught the rest!
+You can also try th quick solver.
+``` python quick-solver.py [args?]```
