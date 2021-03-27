@@ -1,4 +1,4 @@
-# The Maze Runner
+# The Maze Runner - Python
 
 ## An Original Design By: dev.icarus
 
