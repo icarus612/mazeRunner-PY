@@ -1,6 +1,6 @@
 # The Maze Runner
 
-## An Original Design By: Dev.Icarus
+## An Original Design By: dev.icarus
 
 #### My github: https://github.com/icarus612
 #### Project github: https://github.com/icarus612/mazeRunner-PY
