@@ -3,9 +3,6 @@ class Node:
 		self.value = value 
 		self.children = []
 		self.path = set()
-		
-	def add_visited(self, node):
-		self.visited.add(node)
 	
 	def add_child(self, child_node):
 		self.children.append(child_node)
