@@ -1,22 +1,37 @@
-# The Maze Runner - Python
+# Built by: dev.icarus
 
-## An Original Design By: dev.icarus
+Hello there! 👋 I'm dev.icarus, a full-stack developer with a passion for building scalable and efficient applications. This repository serves as a gateway to my diverse range of projects. Here's how you can explore them:
 
-#### My github: https://github.com/icarus612
-#### Project github: https://github.com/icarus612/mazeRunner-PY
+## My Projects
 
-#### A Python Algorithms Project
+Each of my projects has its own dedicated repository. You can browse them by visiting my [GitHub profile](https://github.com/icarus612). Here's what you can expect:
 
-Feel free to use it and change it how you like - Maze runner operates under MIT licenses.
+- **Project Overviews**: In each repository, you'll find a detailed README explaining the project's purpose, technology stack, and how to get it up and running.
 
-### Project Description:
-A maze runner project with a Node, Maze, and Runner class, as well as a Solver script. Maze class stores maze start, end, wall, and floor spaces, and runner class evaluates free spaces and builds node paths between to solve it using a breadth first search. **The solver file can take in any type of maze.** As long as the maze has a uniqe start and end character, and is wrapped in wall characters the solver function can evaluate it as a maze an 'run' it. The solver script can take between 1 - 3 arguments. The first argument(s) is either a maze file to solve or a set of height and width, and  the last argument is an optional save file (default "completed.txt").
+- **Code Insights**: Dive into the code to see my coding style and the technologies I work with. Feel free to explore the commit history for a deeper understanding of the development process.
 
-### How To Run:
-``` python solver.py```
-It guides you throught the rest!
-You can also try th quick solver.
-``` python quick-solver.py [args?]```
+## Collaboration
 
-##### Check me out on github: https://github.com/icarus612
-##### Other projects:  https://mazerunner.devicarus.com | https://quest.devicarus.com | https://deadalus.devicarus.com
+While this repository is just a personal project and not really set up for collaboration, I'm definitely open to it if you're interested. However, if you're looking to contribute to my active open source projects, I'd recommend visiting [The Icarus Project](https://github.com/the-icarus-project). That's where you'll find projects specifically designed for collaboration, complete with all the details and guidelines you need to get started. If you are still undeterred and wish to contribute please make a PR detailing the bug or feature, and I'll get to it as soon as I can.
+
+## Licensing
+
+All my public projects are open-source and licensed under the MIT License. This means you are free to use, modify, and distribute them as you wish, as long as you include the original copyright notice and disclaimer. Check the LICENSE file in each project for more details.
+
+## My Website
+
+For a more curated experience and in-depth insights about my work and interests, check out my personal website at [devicarus.com](https://devicarus.com).
+
+- **Portfolio**: Discover my professional work, personal projects, and contributions to the developer community.
+- **Blog**: Read my thoughts on the latest in tech, development tips, and more.
+- **Contact Information**: Reach out to me for project collaborations, freelance opportunities, or just to say hi!
+
+## Stay Connected
+
+I love to connect with fellow developers and tech enthusiasts. Follow me on GitHub to stay updated with my latest projects. For real-time updates and professional networking, connect with me on [LinkedIn](https://www.linkedin.com/in/ellis-hogan-99a646161) or [GitHub](https://github.com/icarus612).
+
+Thank you for visiting, and happy coding!
+
+---
+
+© 2024 Icarus612. All Rights Reserved.
