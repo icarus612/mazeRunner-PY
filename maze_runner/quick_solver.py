@@ -7,7 +7,7 @@ parser.add_argument("-sf", "--savefile", help="Save File Name", dest='savefile',
 parser.add_argument("-xy", "--dimensions", help="Maze dimentions", dest='dimensions', type=int, nargs=2)
 parser.add_argument("-mt", "--type", help="Maze Type", dest='type', type=str, default='h')
 
-args = parser.parse_args()
+args = parser.parse_known_args()
 saveFile = "completed.txt"
 
 def open_and_build(file):
