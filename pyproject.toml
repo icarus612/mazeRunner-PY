@@ -4,10 +4,12 @@ version = "0.1.0"
 description = ""
 authors = ["icarus64 <ellishogan95@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "src" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-
 
 [build-system]
 requires = ["poetry-core"]
