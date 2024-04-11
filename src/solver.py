@@ -109,7 +109,7 @@ if __name__ == "__main__":
 	parser.add_argument("-sf", "--savefile", help="Save File Name", dest='savefile', type=str, default='completed.txt')
 	parser.add_argument("-d", "--dimensions", help="Maze dimentions", dest='dimensions', type=int, nargs=2)
 	parser.add_argument("-t", "--type", help="Maze Type", dest='type', type=str, default='h')
-	args = parser.parse_known_args()
+	args = parser.parse_known_args()[0]
 
 	m_type = args.type
 	if m_type not in ['h', 'v', 'r']:
